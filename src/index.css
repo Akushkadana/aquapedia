@@ -1,0 +1,171 @@
+:root {
+  --deep: #020b18;
+  --abyss: #040f1f;
+  --midnight: #071529;
+  --ocean: #0a2240;
+  --teal: #0d4f6c;
+  --azure: #0e7490;
+  --cyan: #06b6d4;
+  --glow: #22d3ee;
+  --foam: #a5f3fc;
+  --pearl: #e0f7fa;
+  --gold: #f59e0b;
+  --coral: #f97316;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Raleway', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--deep);
+  color: var(--pearl);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--abyss); }
+::-webkit-scrollbar-thumb { background: var(--azure); border-radius: 3px; }
+
+/* Bubbles animation */
+@keyframes bubble {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes wave {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(6,182,212,0.3); }
+  50% { box-shadow: 0 0 30px rgba(6,182,212,0.7), 0 0 60px rgba(6,182,212,0.3); }
+}
+
+.animate-fadeInUp { animation: fadeInUp 0.6s ease forwards; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-shimmer { animation: shimmer 2s ease-in-out infinite; }
+.glow-card { animation: glow-pulse 3s ease-in-out infinite; }
+
+/* Ocean background */
+.ocean-bg {
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(13,79,108,0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.1) 0%, transparent 40%),
+    linear-gradient(180deg, #020b18 0%, #040f1f 30%, #071529 60%, #0a2240 100%);
+  min-height: 100vh;
+}
+
+/* Glass card */
+.glass {
+  background: rgba(10, 34, 64, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(6,182,212,0.2);
+  border-radius: 12px;
+}
+
+.glass:hover {
+  border-color: rgba(6,182,212,0.5);
+  background: rgba(10, 34, 64, 0.8);
+  transition: all 0.3s ease;
+}
+
+/* Card hover effect */
+.animal-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.animal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(6,182,212,0.3);
+}
+
+/* Input styles */
+.ocean-input {
+  background: rgba(7,21,41,0.8);
+  border: 1px solid rgba(6,182,212,0.3);
+  color: var(--pearl);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.ocean-input:focus { border-color: var(--cyan); }
+.ocean-input::placeholder { color: rgba(165,243,252,0.4); }
+
+/* Button */
+.btn-ocean {
+  background: linear-gradient(135deg, var(--azure), var(--cyan));
+  color: var(--deep);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-ocean:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(6,182,212,0.4);
+}
+.btn-ocean:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(6,182,212,0.4);
+  color: var(--cyan);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-ghost:hover { background: rgba(6,182,212,0.1); border-color: var(--cyan); }
+
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, rgba(13,79,108,0.3) 25%, rgba(6,182,212,0.1) 50%, rgba(13,79,108,0.3) 75%);
+  background-size: 200% 100%;
+  animation: wave 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* Depth zones colors */
+.zone-sunlight { color: #fde68a; }
+.zone-twilight { color: #818cf8; }
+.zone-midnight-zone { color: #a78bfa; }
+.zone-abyssal { color: #60a5fa; }
+.zone-hadal { color: #f472b6; }
